@@ -10,6 +10,15 @@ def population_total(demographic_list: list[data.CountyDemographics])->int:
         num = item.population.get('2014 Population',{})
         i += num
     return i
+#Task 2
+def filer_by_stat (demographic_list: list[data.CountyDemographics], word:str)-> list[data.CountyDemographics]:
+    given_state_list = []
+    for item in demographic_list:
+        if item.state == word is not None:
+            given_state_list.append(item)
+    return given_state_list
+
+
 
 
 

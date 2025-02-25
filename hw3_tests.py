@@ -3,6 +3,7 @@ import build_data
 import unittest
 
 import hw3
+from hw3 import population_total
 
 # These two values are defined to support testing below. The
 # data within these structures should not be modified. Doing
@@ -188,6 +189,18 @@ class TestCases(unittest.TestCase):
 
     # Part 2
     # test filter_by_state
+    def test_filer_by_state (self):
+        result = hw3.filer_by_stat(full_data,'CA')
+        test_population = population_total(result)
+        expected_population = 38802500
+        self.assertEqual(test_population,expected_population)
+        print('If test_population is equal to expected_population then this will print')
+        print(result)
+
+    def test_filer_by_state_empty_list (self):
+        result = hw3.filer_by_stat(full_data,'OP')
+        print(result)
+
 
     # Part 3
     # test population_by_education
