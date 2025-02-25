@@ -194,8 +194,6 @@ class TestCases(unittest.TestCase):
         test_population = population_total(result)
         expected_population = 38802500
         self.assertEqual(test_population,expected_population)
-        print('If test_population is equal to expected_population then this will print')
-        print(result)
 
     def test_filer_by_state_empty_list (self):
         result = hw3.filer_by_stat(full_data,'OP')
@@ -204,17 +202,50 @@ class TestCases(unittest.TestCase):
 
     # Part 3
     # test population_by_education
+    def test_population_by_education (self):
+        result = hw3.population_by_education(reduced_data,"Bachelor's Degree or Higher")
+        print (result)
+
+    def test_population_by_education_num1 (self):
+        result = hw3.population_by_education(full_data,"Middle School")
+        print(result)
     # test population_by_ethnicity
+    def test_population_by_ethnicity (self):
+        result = hw3.population_by_ethnicity(full_data,'Two or More Races')
+        print (result)
+    def test_population_by_ethnicity_num1 (self):
+        result = hw3.population_by_ethnicity(full_data, "European")
+        print (result)
     # test population_below_poverty_level
+    def test_population_below_poverty_level (self):
+        result = hw3.population_below_poverty_level(full_data)
+        print(result)
+
 
     # Part 4
     # test percent_by_education
+    def test_percent_by_education (self):
+        result = hw3.percent_by_education(full_data,"Bachelor's Degree or Higher")
+        print (result)
     # test percent_by_ethnicity
+    def test_percent_by_ethnicity (self):
+        result = hw3.percent_by_ethnicity(full_data,'Two or More Races')
+        print (result)
+    def test_percent_by_poverty (self):
+        result = hw3.percent_by_poverty(full_data)
+        print (result)
+
     # test percent_below_poverty_level
 
     # Part 5
     # test education_greater_than
+    def test_education_greate_than(self):
+        result = hw3.education_greater_than(full_data, "Bachelor's Degree or Higher", 34)
+        print (result)
     # test education_less_than
+    def test_education_less_than(self):
+        result = hw3.education_less_than(full_data, "Bachelor's Degree or Higher", 24)
+        print (result)
     # test ethnicity_greater_than
     # test ethnicity_less_than
     # test below_poverty_level_greater_than
