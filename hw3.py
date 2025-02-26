@@ -1,3 +1,5 @@
+from http.cookiejar import eff_request_host
+
 import build_data
 import county_demographics
 import data
@@ -43,7 +45,7 @@ def population_below_poverty_level (demographic_list: list[data.CountyDemographi
     county_list_of_below_poverty = []
     for item in demographic_list:
         county_pop = item.population.get('2014 Population',{})
-        perc_below_poverty = item.income.get('Persons Below Poverty Level',{})
+        perc_below_poverty = item.income.get('Persons Below Poverty Level',{}) / 100
         county_list_of_below_poverty.append(county_pop * perc_below_poverty)
     return sum(county_list_of_below_poverty)
 
@@ -66,7 +68,7 @@ def percent_by_poverty (demographic: list[data.CountyDemographics])->float:
     population_for_poverty = population_below_poverty_level(demographic)
     total_population = population_total(demographic)
     percentage = population_for_poverty / total_population
-    return percentage
+    return percentage *100
 
 
 #Task 5
@@ -74,19 +76,51 @@ def education_greater_than (demographic: list[data.CountyDemographics], educatio
     edu_list = []
     for item in demographic:
         if education in item.education:
-            if item.education.get(education) >= num:
+            if item.education.get(education) > num:
                 edu_list.append(item)
     return edu_list
-
-
 
 def education_less_than (demographic: list[data.CountyDemographics], education:str , num:float)->list[data.CountyDemographics]:
     edu_list = []
     for item in demographic:
         if education in item.education:
-            if item.education.get(education) <= num:
+            if item.education.get(education) < num:
                 edu_list.append(item)
     return edu_list
+
+
+
+def ethnicity_greater_than (demographic:list[data.CountyDemographics], ethnicity:str , num:float)->list[data.CountyDemographics]:
+    ethnicity_list = []
+    for item in demographic:
+        if ethnicity in item.ethnicities:
+            if item.ethnicities.get(ethnicity) > num:
+                ethnicity_list.append(item)
+    return ethnicity_list
+
+def ethnicity_less_than (demographic:list[data.CountyDemographics], ethnicity:str , num:float)->list[data.CountyDemographics]:
+    ethnicity_list = []
+    for item in demographic:
+        if ethnicity in item.ethnicities:
+            if item.ethnicities.get(ethnicity) < num:
+                ethnicity_list.append(item)
+    return ethnicity_list
+
+def def_poverty_level_greater_than (demographic:list[data.CountyDemographics], num:float)->list[data.CountyDemographics]:
+    poverty_greater = []
+    for item in demographic:
+        if item.income.get('Persons Below Poverty Level',{}) > num:
+            poverty_greater.append(item)
+    return poverty_greater
+
+def def_poverty_level_less_than (demographic:list[data.CountyDemographics], num:float)->list[data.CountyDemographics]:
+    poverty_less = []
+    for item in demographic:
+        if item.income.get('Persons Below Poverty Level',{}) < num:
+            poverty_less.append(item)
+    return poverty_less
+
+
 
 
 

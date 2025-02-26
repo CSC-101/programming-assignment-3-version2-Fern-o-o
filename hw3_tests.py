@@ -191,6 +191,7 @@ class TestCases(unittest.TestCase):
     # test filter_by_state
     def test_filer_by_state (self):
         result = hw3.filer_by_stat(full_data,'CA')
+        print(result)
         test_population = population_total(result)
         expected_population = 38802500
         self.assertEqual(test_population,expected_population)
@@ -203,7 +204,7 @@ class TestCases(unittest.TestCase):
     # Part 3
     # test population_by_education
     def test_population_by_education (self):
-        result = hw3.population_by_education(reduced_data,"Bachelor's Degree or Higher")
+        result = hw3.population_by_education(full_data,"Bachelor's Degree or Higher")
         print (result)
 
     def test_population_by_education_num1 (self):
@@ -247,10 +248,21 @@ class TestCases(unittest.TestCase):
         result = hw3.education_less_than(full_data, "Bachelor's Degree or Higher", 24)
         print (result)
     # test ethnicity_greater_than
+    def test_ethnicity_greater_than (self):
+        result = hw3.ethnicity_greater_than(full_data, 'Hispanic or Latino', 60)
+        print (result)
     # test ethnicity_less_than
+    def test_ethnicity_less_than (self):
+        result = hw3.ethnicity_less_than(full_data, 'Hispanic or Latino' ,6)
+        print(result)
     # test below_poverty_level_greater_than
+    def test_below_poverty_level_greater_than (self):
+        result = hw3.def_poverty_level_greater_than(full_data, 12)
+        print (result)
     # test below_poverty_level_less_than
-
+    def test_below_poverty_level_less_than (self):
+        result = hw3.def_poverty_level_less_than(full_data, 12)
+        print (result)
 
 
 if __name__ == '__main__':
