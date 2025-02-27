@@ -184,7 +184,7 @@ def def_poverty_level_greater_than (demographic:list[data.CountyDemographics], n
 
 #The purpose of this function is to find the counties that have a lower percentage than he number your input
 # the inputs are the data set and the number that you want to compare all th counties to
-# the output is a list of counties that the percentage of poverty is lower than the number your input
+# the output is a list of counties that the percentage of poverty is lower than the number your input.
 def def_poverty_level_less_than (demographic:list[data.CountyDemographics], num:float)->list[data.CountyDemographics]:
     poverty_less = []
     for item in demographic:
